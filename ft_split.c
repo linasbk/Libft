@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsabik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 12:28:16 by lsabik            #+#    #+#             */
-/*   Updated: 2022/10/09 12:28:23 by lsabik           ###   ########.fr       */
+/*   Created: 2022/10/11 22:05:31 by lsabik            #+#    #+#             */
+/*   Updated: 2022/10/11 22:09:47 by lsabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-size_t	ft_strlen(const char *s)
+char **ft_split(char const *s, char c)
 {
-	int i;
 
-	i = 0;
-	while(s[i])
-		i++;
-	return i;
+    while (*s ==c)
+    {
+  
+        if (*s== '\0' )
+            return (0);
+        s++;
+ 
+    }
+    return ((char **)s);
 }
-// int main()
-// {
-// 	printf("%zu\n", strlen(NULL));
-// }

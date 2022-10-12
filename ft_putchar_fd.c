@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsabik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 12:28:16 by lsabik            #+#    #+#             */
-/*   Updated: 2022/10/09 12:28:23 by lsabik           ###   ########.fr       */
+/*   Created: 2022/10/10 10:33:28 by lsabik            #+#    #+#             */
+/*   Updated: 2022/10/10 10:33:30 by lsabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-size_t	ft_strlen(const char *s)
+void ft_putchar_fd(char c, int fd)
 {
-	int i;
-
-	i = 0;
-	while(s[i])
-		i++;
-	return i;
+    write(fd, &c, 1);
 }
-// int main()
-// {
-// 	printf("%zu\n", strlen(NULL));
-// }
+

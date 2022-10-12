@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsabik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 12:28:16 by lsabik            #+#    #+#             */
-/*   Updated: 2022/10/09 12:28:23 by lsabik           ###   ########.fr       */
+/*   Created: 2022/10/10 12:12:49 by lsabik            #+#    #+#             */
+/*   Updated: 2022/10/10 12:12:51 by lsabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-size_t	ft_strlen(const char *s)
+void ft_putnbr_fd(int n, int fd)
 {
-	int i;
+    long long   num;
+    char        c;
 
-	i = 0;
-	while(s[i])
-		i++;
-	return i;
+    num = n;
+    if(num < 0)
+    {
+        num *= -1;
+        ft_putchar_fd('-',fd);       
+    }
+    if(num / 10 != 0)
+        ft_putnbr_fd(num / 10,fd);
+    c = (num %10) + 48;
+    ft_putchar_fd(c,fd);
 }
-// int main()
-// {
-// 	printf("%zu\n", strlen(NULL));
-// }

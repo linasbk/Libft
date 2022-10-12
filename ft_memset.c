@@ -20,3 +20,9 @@ void	*ft_memset(void *b, int c, size_t len)
 	}
 	return (b);
 }
+// int main()
+// {
+// 	int s[]={'1','8','5','6','0'};	
+// 	ft_memset(s,'*',4);
+// 	printf("%s",s);
+// }
