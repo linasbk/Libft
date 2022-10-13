@@ -11,33 +11,34 @@
 /* ************************************************************************** */
 
 #include"libft.h"
-char *ft_strtrim(char const *s1, char const *set)
-{
-	
-}
-// char *ft_strtrim(char const *s1, char const *set)
-// {
-// 	char	*str;
-// 	size_t	first;
-// 	size_t	last;
 
-// 	first = 0;
-// 	last = ft_strlen(s1);
-// 	str = NULL;
-// 	if(!s1 || !set)
-// 		return(NULL);
-// 	while(ft_strchr(set,s1[first]))
-// 		first++;
-// 	while(ft_strrchr(set,s1[last]) && first < last)
-// 		last--;
-// 	str = malloc(sizeof(char) * (last - first + 1));
-// 	if(str)
-// 		ft_strlcpy(str,s1 + first,(last - first + 1));
-// 	return(str);
-// }
-int main()
+static int	check_set(char s1, char *set)
 {
-	char *s="   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n";
-	char *set=" \n\t";
-	printf("%s",ft_strtrim(s,set));
+	while (*set)
+	{
+		if (*set == s1)
+			return (1);
+		set++;
+	}
+	return (0);
+}
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	char	*str;
+	size_t	first;
+	size_t	last;
+
+	first = 0;
+	str = NULL;
+	if(!s1 || !set)
+		return(NULL);
+	last = ft_strlen(s1) - 1;
+	while(s1 && check_set(s1[first], (char*)set))
+		first++;
+	while(check_set(s1[last], (char*)set) && first < last)
+		last--;
+	str = malloc(sizeof(char) * (last - first + 1));
+	if(str)
+		str = ft_substr(s1, first, (last - first + 1));
+	return(str);
 }

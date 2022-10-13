@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsabik <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 22:04:52 by lsabik            #+#    #+#             */
-/*   Updated: 2022/10/11 22:11:37 by lsabik           ###   ########.fr       */
+/*   Created: 2022/10/12 22:38:51 by lsabik            #+#    #+#             */
+/*   Updated: 2022/10/12 22:38:53 by lsabik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+
+void    ft_striteri(char *s, void (*f)(unsigned int,char*))
 {
-	char	*res;
-	int		i;
-	int		len;
-	int		len2;
+    int i;
 
-	i = 0;
-	if (!s1 || !s2)
-		return (NULL);
-	len = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	res = malloc(sizeof(char) * (len + len2 + 1));
-	if (!res)
-		return (NULL);
-	while (s1[i])
-	{
-		res[i] = s1[i];
-		i++;
-	}
-	i = 0;
-	while (s2[i])
-		res[len++] = s2[i++];
-	res[len] = '\0';
-	return ((char *)res);
+    i = 0;
+    while (s[i])
+    {
+        s[i] = f(i,s[i]);
+        i++;
+    }
 }
