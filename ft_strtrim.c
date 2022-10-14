@@ -22,6 +22,7 @@ static int	check_set(char s1, char *set)
 	}
 	return (0);
 }
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
@@ -29,16 +30,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	last;
 
 	first = 0;
-	str = NULL;
-	if(!s1 || !set)
-		return(NULL);
+	if (!s1 || !set)
+		return (NULL);
 	last = ft_strlen(s1) - 1;
-	while(s1 && check_set(s1[first], (char*)set))
+	while (s1 && check_set(s1[first], (char *)set))
 		first++;
-	while(check_set(s1[last], (char*)set) && first < last)
+	while (check_set(s1[last], (char *)set) && first < last)
 		last--;
-	str = malloc(sizeof(char) * (last - first + 1));
-	if(str)
-		str = ft_substr(s1, first, (last - first + 1));
-	return(str);
+	str = ft_substr(s1, first, (last - first + 1));
+	if (!str)
+		return (NULL);
+	return (str);
 }

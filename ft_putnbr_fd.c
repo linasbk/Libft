@@ -12,19 +12,19 @@
 
 #include"libft.h"
 
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-    long long   num;
-    char        c;
+	long long	num;
+	char		c;
 
-    num = n;
-    if(num < 0)
-    {
-        num *= -1;
-        ft_putchar_fd('-',fd);       
-    }
-    if(num / 10 != 0)
-        ft_putnbr_fd(num / 10,fd);
-    c = (num %10) + 48;
-    ft_putchar_fd(c,fd);
+	num = n;
+	if (num < 0)
+	{
+		num *= -1;
+		ft_putchar_fd('-', fd);
+	}
+	if (num / 10 != 0)
+		ft_putnbr_fd(num / 10, fd);
+	c = (num % 10) + 48;
+	ft_putchar_fd(c, fd);
 }

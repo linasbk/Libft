@@ -12,47 +12,53 @@
 
 #include"libft.h"
 
-static int ft_lenstring(int s)
+static int	ft_lenstring(int s)
 {
 	int	i;
 
 	i = 0;
-	if(s <= 0)
+	if (s <= 0)
 		i++;
-	while(s)
+	while (s)
 	{
 		s /= 10;
 		i++;
 	}
-	return(i);
+	return (i);
 }
 
-char *ft_itoa(int n)
+static char	ft_array(char *ptr, long long nbr, int len)
+{
+	while (nbr)
+	{
+		len--;
+		*(ptr + len) = (nbr % 10) + 48;
+		nbr = nbr / 10;
+	}
+	return (nbr);
+}
+
+char	*ft_itoa(int n)
 {
 	char		*ptr;
 	long long	nbr;
-	int	len;
+	int			len;
 
-    ptr = NULL;
-    nbr = n;
-    len = ft_lenstring(nbr);
-    ptr = malloc(sizeof(char) * (len) + 1);
-    if(ptr)
-    {
-		if(nbr == 0)
+	ptr = NULL;
+	nbr = n;
+	len = ft_lenstring(nbr);
+	ptr = malloc(sizeof(char) * len + 1);
+	if (ptr)
+	{
+		if (nbr == 0)
 			*ptr = '0';
-		if(nbr < 0)
+		if (nbr < 0)
 		{
 			nbr *= -1;
 			*ptr = '-';
 		}
 		*(ptr + len) = '\0';
-		while(nbr)
-		{
-			len--;
-			*(ptr + len) = (nbr % 10) + 48;
-			nbr = nbr /10;  
-		}  
-	} 	
-	return(ptr);
+		nbr = ft_array(ptr, nbr, len);
+	}
+	return (ptr);
 }

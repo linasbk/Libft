@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include"libft.h"
 
-
-void    ft_striteri(char *s, void (*f)(unsigned int,char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (s[i])
-    {
-        s[i] = f(i,s[i]);
-        i++;
-    }
+	i = 0;
+	while (s && s[i])
+	{
+		f (i, &s[i]);
+		i++;
+	}
 }

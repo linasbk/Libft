@@ -1,4 +1,4 @@
-o/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
@@ -11,66 +11,88 @@ o/* ************************************************************************** *
 /* ************************************************************************** */
 
 #include"libft.h"
-int get_num_word(char *s, char sep)
+
+int	get_num_word(char *s, char sep)
 {
-	int count;
+	int	count;
 	int	i;
-	int new_word;
+	int	new_word;
 
 	count = 0;
-	new_word = 1:
+	new_word = 1;
 	i = 0;
 	while (s[i])
 	{
-		if(s[i] == sep )
+		if (s[i] == sep)
 			new_word = 1;
-		if(s[i] != sep && new_word)
-			{
+		if (s[i] != sep && new_word)
+		{
 				count++;
 				new_word = 0;
-			}
+		}
 		i++;
 	}
 	return (count);
 }
 
-char	get_word(char *s, char c)
+char	*word_dup(char *s, char c, int *lenght)
 {
 	int		i;
 	int		k;
-	int		j;
-	int		len;
 	char	*word;
 
-	i = 0;
-	len = 0;
-	while(s[i])
+	i = *lenght;
+	while (s[i] == c)
 		i++;
-	k = i;	
-	while (k < i)
-	{
-		word[len] = s[k];
-		len++;
-		k++;
-	}
-	word[len] = '/0';
-	j = i;
+	k = i;
+	while (s[i] != c)
+		i++;
+	word = ft_substr(s, k, i - k);
+	*lenght = i;
 	return (word);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_free(char **str, int size)
 {
-	char **str;
-	int	full_len;
+	while (size--)
+		free(str[size]);
+	free(str);
+	return (NULL);
+}
 
-	full_len = get_num_word(s,c);
+char	**ft_split(char const *s, char c)
+{
+	char	**str;
+	int		i;
+	int		lenght;
+	int		full_len;
+
+	i = 0;
+	lenght = 0;
+	if (!s)
+		return (NULL);
+	full_len = get_num_word((char *)s, c);
 	str = malloc(sizeof(char *) * (full_len + 1));
+	if (!str)
+		return (NULL);
 	while (i < full_len)
 	{
-		str[i] = get_word(s,c);
-		// if ()
+		str[i] = word_dup((char *)s, c, &lenght);
+		if (!str[i])
+			return (ft_free(str, i));
 		i++;
 	}
 	str[i] = 0;
-	return (**s);
+	return (str);
+}
+int main()
+{
+  int i = 0;
+    // char *str = " salam  lina ";
+    char **ptr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+    while(ptr && ptr[i])
+    {
+      printf("%s \n", ptr[i]);
+      i++;
+    }
 }
